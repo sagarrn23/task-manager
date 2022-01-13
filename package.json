@@ -1,6 +1,6 @@
 {
   "name": "task-manager",
-  "homepage": ".",
+  "homepage": "https://sagarrn23.github.io/task-manager/",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
