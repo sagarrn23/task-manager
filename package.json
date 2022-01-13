@@ -1,10 +1,10 @@
 {
-  "homepage": "https://sagarrn23.github.io/task-manager",
+  "homepage": "https://sagarrn23.github.io/task-manager/",
   "name": "task-manager",
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --base=https://sagarrn23.github.io/task-manager/",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -b production -d dist"
