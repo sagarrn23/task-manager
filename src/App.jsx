@@ -1,9 +1,14 @@
-import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  return <div className="App">Task Manager</div>;
+	return (
+		<div className="flex justify-center">
+			<h1 className="font-bold text-2xl text-blue-900">
+				<FontAwesomeIcon icon={faCoffee} /> React and Tailwind with Vitejs!
+			</h1>
+		</div>
+	);
 }
 
 export default App;
