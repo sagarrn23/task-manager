@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link, NavLink } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 import {
 	faDotCircle,
 	faHome,
@@ -21,15 +22,15 @@ const icons = [
 	},
 	{
 		icon: faUser,
-		route: '/board'
+		route: '/'
 	},
 	{
 		icon: faClock,
-		route: '/board'
+		route: '/'
 	},
 	{
 		icon: faComment,
-		route: '/board'
+		route: '/'
 	}
 ];
 
@@ -46,6 +47,7 @@ function MenuPanel() {
 					className={(isActive) =>
 						'p-2 mb-2 ' + (isActive ? 'bg-teal-500 rounded-lg' : '')
 					}
+					key={uuidv4()}
 				>
 					<FontAwesomeIcon icon={item.icon} size="2x" inverse fixedWidth />
 				</NavLink>
@@ -54,4 +56,4 @@ function MenuPanel() {
 	);
 }
 
-export default MenuPanel;
+export default React.memo(MenuPanel);

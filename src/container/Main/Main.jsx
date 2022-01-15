@@ -6,10 +6,10 @@ import MenuPanel from '../../components/MenuPanel/MenuPanel';
 function Main() {
 	return (
 		<div className="w-screen h-screen flex">
-			<div className="h-full">
+			<div className="h-full w-[5%]">
 				<MenuPanel />
 			</div>
-			<div className="grow">
+			<div className="w-[95%] flex flex-col">
 				<Header />
 				<Router />
 			</div>
@@ -17,4 +17,4 @@ function Main() {
 	);
 }
 
-export default Main;
+export default React.memo(Main);

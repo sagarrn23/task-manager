@@ -119,6 +119,7 @@ module.exports = {
 		},
 		flexGrow: {
 			0: '0',
+			1: '1',
 			default: '1'
 		},
 		flexShrink: {
@@ -156,6 +157,7 @@ module.exports = {
 			base: '1rem',
 			lg: '1.125rem',
 			xl: '1.25rem',
+			'5xl': '3rem',
 			...theme('spacing')
 		}),
 		fontWeight: {
@@ -229,7 +231,8 @@ module.exports = {
 		},
 		minWidth: {
 			0: '0',
-			full: '100%'
+			full: '100%',
+			24: '24rem'
 		},
 		objectPosition: {
 			bottom: 'bottom',

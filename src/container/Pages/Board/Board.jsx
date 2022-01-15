@@ -1,13 +1,17 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import AddTaskBtn from '../../../components/AddTaskBtn/AddTaskBtn';
+import DragPanel from '../../../components/DragPanel/DragPanel';
+import Modal from '../../../components/Modal/Modal';
 
 function Board() {
+	const [openModal, setOpenModal] = useState(false);
 	return (
-		<div>
-			Board
-			<Link to="/home">Home</Link>
+		<div className="p-4 grow-1">
+			<DragPanel />
+			<AddTaskBtn setModal={setOpenModal} />
+			{openModal ? <Modal setModal={setOpenModal} /> : null}
 		</div>
 	);
 }
 
-export default Board;
+export default React.memo(Board);
