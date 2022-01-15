@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
-import Router from './Router';
+import Main from './container/Main/Main';
 
 function App() {
 	return (
 		<BrowserRouter>
-			<Router />
+			<Main />
 		</BrowserRouter>
 	);
 }
