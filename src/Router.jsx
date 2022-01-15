@@ -6,9 +6,9 @@ const Router = () => {
 	return (
 		<Switch>
 			<Route path="/board" component={Board} />
-			<Route exact path="/task-manager/" component={Home} />
+			<Route exact path="/" component={Home} />
 			<Route path="*">
-				<Redirect to="/task-manager/" />
+				<Redirect to="/" />
 			</Route>
 		</Switch>
 	);
