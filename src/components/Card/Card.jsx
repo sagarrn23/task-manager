@@ -7,11 +7,9 @@ function Card({ provided, item, snapshot }) {
 			{...provided.draggableProps}
 			{...provided.dragHandleProps}
 			className="bg-white rounded-default drop-shadow-xl mb-4 p-2 hover:cursor-pointer"
-			// style={{
-			// 	backgroundColor: snapshot.isDragging ? '#263B4A' : '#456C86',
-			// }}
+			onClick={() => console.log(item)}
 		>
-			<p className="text-black font-bold">{item.content}</p>
+			<p className="text-black font-bold">{item.title}</p>
 		</div>
 	);
 }

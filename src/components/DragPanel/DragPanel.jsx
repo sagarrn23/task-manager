@@ -1,38 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { v4 as uuidv4 } from 'uuid';
 import PanelDroppable from './PanelDroppable';
+import { store } from '../../store';
 
-const itemsFromBackend = [
-	{ id: uuidv4(), content: 'First task' },
-	{ id: uuidv4(), content: 'Second task' },
-	{ id: uuidv4(), content: 'Third task' },
-	{ id: uuidv4(), content: 'Fourth task' },
-	{ id: uuidv4(), content: 'Fifth task' }
-];
-
-const columnsFromBackend = {
-	[uuidv4()]: {
-		name: 'To do',
-		items: itemsFromBackend
-	},
-	[uuidv4()]: {
-		name: 'In Progress',
-		items: []
-	},
-	[uuidv4()]: {
-		name: 'In Review',
-		items: []
-	},
-	[uuidv4()]: {
-		name: 'Done',
-		items: []
-	}
-};
-
-const onDragEnd = (result, columns, setColumns) => {
+const onDragEnd = (result, columns, setColumns, dispatch) => {
 	if (!result.destination) return;
-	const { source, destination } = result;
+	const { draggableId, source, destination } = result;
+	if (source.droppableId !== destination.droppableId) {
+		dispatch({
+			type: 'UPDATE_STATUS',
+			newStatus: columns[destination.droppableId].key,
+			taskId: draggableId
+		});
+	}
 
 	if (source.droppableId !== destination.droppableId) {
 		const sourceColumn = columns[source.droppableId];
@@ -68,11 +49,42 @@ const onDragEnd = (result, columns, setColumns) => {
 };
 
 const DragPanel = () => {
-	const [columns, setColumns] = useState(columnsFromBackend);
+	const globalState = useContext(store);
+	const { dispatch, state } = globalState;
+
+	const itemsFromBackend = (status) =>
+		state.filter((item) => item.status === status);
+
+	const panelColumns = {
+		1: {
+			name: 'To do',
+			key: 'to-do',
+			items: itemsFromBackend('to-do')
+		},
+		2: {
+			name: 'In Progress',
+			key: 'in-progress',
+			items: itemsFromBackend('in-progress')
+		},
+		3: {
+			name: 'In Review',
+			key: 'in-review',
+			items: itemsFromBackend('in-review')
+		},
+		4: {
+			name: 'Done',
+			key: 'done',
+			items: itemsFromBackend('done')
+		}
+	};
+	const [columns, setColumns] = useState({});
+	useEffect(() => {
+		setColumns(panelColumns);
+	}, [state]);
 	return (
 		<div className="flex h-full overflow-auto">
 			<DragDropContext
-				onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+				onDragEnd={(result) => onDragEnd(result, columns, setColumns, dispatch)}
 			>
 				{Object.entries(columns).map(([columnId, column], index) => {
 					return (
