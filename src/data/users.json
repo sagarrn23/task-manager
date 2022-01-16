@@ -1,0 +1,32 @@
+[
+	{
+		"id": 1,
+		"firstName": "sagar",
+		"lastName": "chaudhari",
+		"avatar": "https://randomuser.me/api/portraits/men/41.jpg"
+	},
+	{
+		"id": 2,
+		"firstName": "shailu",
+		"lastName": "gadekar",
+		"avatar": "https://randomuser.me/api/portraits/men/10.jpg"
+	},
+	{
+		"id": 3,
+		"firstName": "jidnesh",
+		"lastName": "patil",
+		"avatar": "https://randomuser.me/api/portraits/men/30.jpg"
+	},
+	{
+		"id": 4,
+		"firstName": "priti",
+		"lastName": "patil",
+		"avatar": "https://randomuser.me/api/portraits/women/72.jpg"
+	},
+	{
+		"id": 5,
+		"firstName": "namrata",
+		"lastName": "kulkarni",
+		"avatar": "https://randomuser.me/api/portraits/women/40.jpg"
+	}
+]
