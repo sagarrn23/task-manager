@@ -1,15 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import AddTaskBtn from '../../../components/AddTaskBtn/AddTaskBtn';
 import DragPanel from '../../../components/DragPanel/DragPanel';
 import Modal from '../../../components/Modal/Modal';
+import { store } from '../../../store';
 
 function Board() {
-	const [openModal, setOpenModal] = useState(false);
+	const globalState = useContext(store);
+	const { dispatch, state } = globalState;
+
 	return (
 		<div className="p-4 grow-1">
 			<DragPanel />
-			<AddTaskBtn setModal={setOpenModal} />
-			{openModal ? <Modal setModal={setOpenModal} /> : null}
+			<AddTaskBtn />
+			{state.modalState ? <Modal /> : null}
 		</div>
 	);
 }

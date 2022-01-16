@@ -1,7 +1,29 @@
 import React, { createContext, useReducer } from 'react';
-import { updateStatus, getStoredTasks } from './actions';
+import { v4 as uuidv4 } from 'uuid';
+import {
+	updateStatus,
+	getStoredTasks,
+	setModalState,
+	addNewTask,
+	updateExistingTask,
+	setModalData,
+	taskEditStatus
+} from './actions';
 
-const initialState = [];
+const initialState = {
+	modalState: false,
+	updating: false,
+	modalData: {
+		title: '',
+		description: '',
+		images: [],
+		id: uuidv4(),
+		status: 'to-do',
+		dueDate: '18-01-2022',
+		userId: '5'
+	},
+	tasks: []
+};
 
 const reducer = (state, action) => {
 	switch (action.type) {
@@ -9,6 +31,16 @@ const reducer = (state, action) => {
 			return getStoredTasks(state, action.data);
 		case 'UPDATE_STATUS':
 			return updateStatus(state, action.newStatus, action.taskId);
+		case 'SET_MODAL_STATE':
+			return setModalState(state, action.modalDisplay);
+		case 'ADD_NEW_TASK':
+			return addNewTask(state, action.newTask);
+		case 'UPDATE_TASK':
+			return updateExistingTask(state, action.updateTask);
+		case 'SET_MODAL_DATA':
+			return setModalData(state, action.updatedData);
+		case 'TASK_EDIT_STATUS':
+			return taskEditStatus(state, action.value);
 		default:
 			return state;
 	}

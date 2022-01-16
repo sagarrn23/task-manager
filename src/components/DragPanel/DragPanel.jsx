@@ -52,8 +52,9 @@ const DragPanel = () => {
 	const globalState = useContext(store);
 	const { dispatch, state } = globalState;
 
+	// to change the status of the task
 	const itemsFromBackend = (status) =>
-		state.filter((item) => item.status === status);
+		state.tasks.filter((item) => item.status === status);
 
 	const panelColumns = {
 		1: {
