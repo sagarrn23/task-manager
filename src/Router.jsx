@@ -5,10 +5,10 @@ import { Board, Home } from './container';
 const Router = () => {
 	return (
 		<Switch>
-			<Route path="/board" component={Board} />
-			<Route exact path="/" component={Home} />
+			<Route path="/task-manager/board" component={Board} />
+			<Route exact path="/task-manager/" component={Home} />
 			<Route path="*">
-				<Redirect to="/" />
+				<Redirect to="/task-manager/" />
 			</Route>
 		</Switch>
 	);

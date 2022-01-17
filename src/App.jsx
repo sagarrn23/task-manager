@@ -18,7 +18,7 @@ function App() {
 	}, []);
 
 	return (
-		<BrowserRouter basename="/task-manager">
+		<BrowserRouter>
 			<Main />
 		</BrowserRouter>
 	);
