@@ -89,11 +89,11 @@ const DragPanel = () => {
 				{Object.entries(columns).map(([columnId, column], index) => {
 					return (
 						<div
-							className="flex flex-col items-center py-2 mx-2 grow-1 md:min-w-[340px] md:max-w-[340px] bg-teal-100 rounded-lg"
+							className="flex flex-col items-center py-2 mx-2 grow-1 md:min-w-[340px] md:max-w-[340px] bg-teal-100 rounded-lg min-h-[100px]"
 							key={columnId}
 						>
 							<h2 className="text-left w-full px-2 font-bold">{column.name}</h2>
-							<div className="p-2 h-full w-full">
+							<div className="p-2 h-full w-full flex flex-1">
 								<PanelDroppable columnId={columnId} column={column} />
 							</div>
 						</div>

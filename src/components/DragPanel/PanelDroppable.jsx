@@ -10,7 +10,7 @@ function PanelDroppable({ columnId, column }) {
 					<div
 						{...provided.droppableProps}
 						ref={provided.innerRef}
-						className="h-full"
+						className="md:h-full w-full"
 					>
 						{column.items.map((item, index) => {
 							return <PanelDraggable item={item} index={index} key={item.id} />;

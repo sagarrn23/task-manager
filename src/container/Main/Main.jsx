@@ -16,7 +16,10 @@ function Main() {
 			>
 				<MenuPanel />
 			</div>
-			<div className="w-[100%] flex flex-col">
+			<div
+				style={{ width: state.menuPanelState ? '95%' : '100%' }}
+				className="w-[95%] flex flex-col"
+			>
 				<Header />
 				<Router />
 			</div>
