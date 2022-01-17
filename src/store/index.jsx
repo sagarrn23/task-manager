@@ -9,7 +9,8 @@ import {
 	setModalData,
 	taskEditStatus,
 	filterTasks,
-	setMenuPanelState
+	setMenuPanelState,
+	removeTask
 } from './actions';
 
 const initialState = {
@@ -49,6 +50,8 @@ const reducer = (state, action) => {
 			return taskEditStatus(state, action.value);
 		case 'FILTER_TASKS':
 			return filterTasks(state, action.isChecked, action.userId);
+		case 'REMOVE_TASK':
+			return removeTask(state, action.taskId);
 		default:
 			return state;
 	}

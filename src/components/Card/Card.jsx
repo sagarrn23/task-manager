@@ -1,5 +1,9 @@
 import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
-import { faCheck, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import {
+	faCheck,
+	faPaperclip,
+	faTrash
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { store } from '../../store';
@@ -78,15 +82,30 @@ function Card({ provided, item, snapshot }) {
 		return 'bg-stone-200';
 	};
 
+	const removeTask = (e, id) => {
+		e.stopPropagation();
+		dispatch({
+			type: 'REMOVE_TASK',
+			taskId: id
+		});
+	};
+
 	return (
 		<div
 			ref={provided.innerRef}
 			{...provided.draggableProps}
 			{...provided.dragHandleProps}
-			className="bg-stone-50 rounded-default drop-shadow-xl mb-4 p-3 hover:cursor-pointer"
+			className="group relative bg-stone-50 rounded-default drop-shadow-xl mb-4 p-3 hover:cursor-pointer"
 			onClick={updateTask}
 		>
 			<p className="text-black font-bold capitalize">{item.title}</p>
+			<span className="absolute right-[0.75rem] top-[0.75rem] hidden group-hover:inline transition-all text-red">
+				<FontAwesomeIcon
+					icon={faTrash}
+					size="sm"
+					onClick={(e) => removeTask(e, item.id)}
+				/>
+			</span>
 			{item.images.length ? (
 				<div className="my-4 -mx-3">
 					<img

@@ -45,7 +45,8 @@ function MenuPanel() {
 					to={item.route}
 					exact
 					className={(isActive) =>
-						'p-2 mb-2 ' + (isActive ? 'bg-teal-500 rounded-lg' : '')
+						'p-2 mb-2 hover:bg-teal-500 hover:rounded-lg ' +
+						(isActive ? 'bg-teal-500 rounded-lg' : '')
 					}
 					key={uuidv4()}
 				>

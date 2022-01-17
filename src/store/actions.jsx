@@ -87,3 +87,11 @@ export const filterTasks = (globalState, isChecked, userId) => {
 		tasks: filteredTasks
 	};
 };
+
+export const removeTask = (globalState, taskId) => {
+	const tasks = [...globalState.tasks].filter((task) => task.id !== taskId);
+	return {
+		...globalState,
+		tasks: tasks
+	};
+};
