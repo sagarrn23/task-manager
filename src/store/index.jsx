@@ -8,12 +8,14 @@ import {
 	updateExistingTask,
 	setModalData,
 	taskEditStatus,
-	filterTasks
+	filterTasks,
+	setMenuPanelState
 } from './actions';
 
 const initialState = {
 	modalState: false,
 	updating: false,
+	menuPanelState: true,
 	modalData: {
 		title: '',
 		description: '',
@@ -35,6 +37,8 @@ const reducer = (state, action) => {
 			return updateStatus(state, action.newStatus, action.taskId);
 		case 'SET_MODAL_STATE':
 			return setModalState(state, action.modalDisplay);
+		case 'SET_MENU_PANEL_STATE':
+			return setMenuPanelState(state, action.menuPanelDisplay);
 		case 'ADD_NEW_TASK':
 			return addNewTask(state, action.newTask);
 		case 'UPDATE_TASK':

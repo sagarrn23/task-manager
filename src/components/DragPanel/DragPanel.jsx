@@ -82,14 +82,14 @@ const DragPanel = () => {
 		setColumns(panelColumns);
 	}, [state]);
 	return (
-		<div className="flex overflow-auto min-h-full">
+		<div className="flex flex-col gap-y-4 md:flex-row overflow-auto min-h-full">
 			<DragDropContext
 				onDragEnd={(result) => onDragEnd(result, columns, setColumns, dispatch)}
 			>
 				{Object.entries(columns).map(([columnId, column], index) => {
 					return (
 						<div
-							className="flex flex-col items-center py-2 mx-2 grow-1 min-w-[340px] max-w-[340px] bg-teal-100 rounded-lg"
+							className="flex flex-col items-center py-2 mx-2 grow-1 md:min-w-[340px] md:max-w-[340px] bg-teal-100 rounded-lg"
 							key={columnId}
 						>
 							<h2 className="text-left w-full px-2 font-bold">{column.name}</h2>

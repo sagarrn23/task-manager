@@ -82,7 +82,7 @@ const Modal = () => {
 
 	return ReactDOM.createPortal(
 		<div className="fixed w-screen h-screen top-0 left-0 bg-black bg-opacity-50">
-			<div className="min-h-[400px] w-[500px] absolute top-[50%] left-[50%] flex flex-col justify-top items-top bg-stone-50 rounded-default -translate-x-2/4 -translate-y-2/4 gap-4 p-4 pt-16 border-default border-stone-400 drop-shadow-xl">
+			<div className="w-[320px] md:min-h-[400px] md:w-[500px] absolute top-[50%] left-[50%] flex flex-col justify-top items-top bg-stone-50 rounded-default -translate-x-2/4 -translate-y-2/4 gap-4 p-4 pt-16 border-default border-stone-400 drop-shadow-xl">
 				<div className="w-full flex flex-col">
 					<label className="font-bold" htmlFor="title">
 						Title

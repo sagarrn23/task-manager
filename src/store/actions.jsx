@@ -27,6 +27,13 @@ export const setModalState = (globalState, modalDisplay) => {
 	};
 };
 
+export const setMenuPanelState = (globalState, menuPanelDisplay) => {
+	return {
+		...globalState,
+		menuPanelState: menuPanelDisplay
+	};
+};
+
 export const addNewTask = (globalState, newTask) => {
 	const tasks = [...globalState.tasks];
 	tasks.push(newTask);
