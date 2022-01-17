@@ -37,7 +37,6 @@ export const addNewTask = (globalState, newTask) => {
 };
 
 export const updateExistingTask = (globalState, updateTask) => {
-	console.log(updateTask);
 	const tasks = [...globalState.tasks].map((task) => {
 		if (task.id === updateTask.id) {
 			return updateTask;

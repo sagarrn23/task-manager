@@ -13,6 +13,7 @@ const modalRootEl = document.getElementById('modal-root');
 const Modal = () => {
 	const globalState = useContext(store);
 	const { dispatch, state } = globalState;
+
 	const setModal = () => {
 		dispatch({
 			type: 'SET_MODAL_STATE',
@@ -34,16 +35,16 @@ const Modal = () => {
 		setSelectedUser(e.target.value);
 	};
 
-	const addNewTask = () => {
-		dispatch({
+	const addNewTask = async () => {
+		await dispatch({
 			type: 'ADD_NEW_TASK',
 			newTask: { ...state.modalData }
 		});
 		setModal();
 	};
 
-	const updateTask = () => {
-		dispatch({
+	const updateTask = async () => {
+		await dispatch({
 			type: 'UPDATE_TASK',
 			updateTask: { ...state.modalData }
 		});
@@ -74,6 +75,7 @@ const Modal = () => {
 
 	useEffect(() => {
 		setTasks(state.tasks);
+		console.log(state.tasks);
 	}, [state.tasks]);
 
 	const [selectedUser, setSelectedUser] = useState('');
