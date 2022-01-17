@@ -24,14 +24,14 @@ function AddTaskBtn() {
 				images: [],
 				id: uuidv4(),
 				status: 'to-do',
-				dueDate: '18-01-2022',
-				userId: '5'
+				dueDate: '',
+				userId: '1'
 			}
 		});
 	};
 	return (
 		<div
-			className="fixed rounded-full bg-teal-400 right-[2rem] bottom-[2rem] w-14 h-14 text-white flex justify-center items-center cursor-pointer drop-shadow-md"
+			className="fixed rounded-full bg-teal-400 hover:bg-teal-500 transition-all right-[2rem] bottom-[2rem] w-14 h-14 text-white flex justify-center items-center cursor-pointer drop-shadow-md"
 			onClick={updateTask}
 		>
 			<FontAwesomeIcon icon={faPlus} size="1x" />

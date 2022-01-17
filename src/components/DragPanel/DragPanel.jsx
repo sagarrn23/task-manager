@@ -1,6 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { DragDropContext } from 'react-beautiful-dnd';
-import { v4 as uuidv4 } from 'uuid';
 import PanelDroppable from './PanelDroppable';
 import { store } from '../../store';
 
@@ -83,7 +82,7 @@ const DragPanel = () => {
 		setColumns(panelColumns);
 	}, [state]);
 	return (
-		<div className="flex h-full overflow-auto">
+		<div className="flex overflow-auto min-h-full">
 			<DragDropContext
 				onDragEnd={(result) => onDragEnd(result, columns, setColumns, dispatch)}
 			>

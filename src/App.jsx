@@ -7,13 +7,14 @@ import { store } from './store';
 function App() {
 	const globalState = useContext(store);
 	const { dispatch, state } = globalState;
-
 	useEffect(() => {
 		const storedTask = getTasks();
-		dispatch({
-			type: 'GET_STORED_TASKS',
-			data: storedTask
-		});
+		if (storedTask) {
+			dispatch({
+				type: 'GET_STORED_TASKS',
+				data: storedTask
+			});
+		}
 	}, []);
 
 	return (

@@ -16,7 +16,7 @@ export const updateStatus = (globalState, status, id) => {
 	setTasks(newState);
 	return {
 		...globalState,
-		taskList
+		tasks: newState
 	};
 };
 

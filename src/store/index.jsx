@@ -19,8 +19,8 @@ const initialState = {
 		images: [],
 		id: uuidv4(),
 		status: 'to-do',
-		dueDate: '18-01-2022',
-		userId: '5'
+		dueDate: '',
+		userId: ''
 	},
 	tasks: []
 };

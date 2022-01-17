@@ -1,5 +1,9 @@
+import { faBell, faComment } from '@fortawesome/free-regular-svg-icons';
+import { faCheck, faPaperclip } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext } from 'react';
 import { store } from '../../store';
+import users from './../../data/users.json';
 
 function Card({ provided, item, snapshot }) {
 	const globalState = useContext(store);
@@ -23,15 +27,92 @@ function Card({ provided, item, snapshot }) {
 		});
 	};
 
+	const userAvatar = (id) => {
+		const avatar = users.filter((user) => user.id === +id)[0];
+		return avatar.avatar;
+	};
+
+	const infoLabel = (icon, content, bg = 'bg-stone-200') => {
+		const classes = `py-1 px-2 ${bg} text-black flex gap-1 justify-center items-center rounded-default`;
+		return content ? (
+			<span className={classes}>
+				<FontAwesomeIcon icon={icon} size="sm" />
+				{content}
+			</span>
+		) : null;
+	};
+
+	const dueDateCell = (dueDt) => {
+		console.log(dueDt);
+		const dateParts = dueDt.split('-');
+		const monthNames = [
+			'Jan',
+			'Feb',
+			'Mar',
+			'Apr',
+			'May',
+			'Jun',
+			'Jul',
+			'Aug',
+			'Sep',
+			'Oct',
+			'Nov',
+			'Dec'
+		];
+
+		const date = new Date(+dateParts[0], dateParts[1] - 1, +dateParts[2]);
+
+		return `${monthNames[date.getMonth()]}, ${date.getDate()}`;
+	};
+
+	const bgColor = ({ status, dueDate }) => {
+		if (status === 'done') return 'bg-blue';
+
+		const dateParts = dueDate.split('-');
+		const date = +new Date(+dateParts[0], dateParts[1] - 1, +dateParts[2]);
+
+		if (date < +new Date()) return 'bg-red';
+		if (date - +new Date() > 86400000 * 7) return 'bg-yellow';
+		if (date - +new Date() > 86400000 * 2) return 'bg-orange';
+		return 'bg-stone-200';
+	};
+
 	return (
 		<div
 			ref={provided.innerRef}
 			{...provided.draggableProps}
 			{...provided.dragHandleProps}
-			className="bg-white rounded-default drop-shadow-xl mb-4 p-2 hover:cursor-pointer"
+			className="bg-stone-50 rounded-default drop-shadow-xl mb-4 p-3 hover:cursor-pointer"
 			onClick={updateTask}
 		>
-			<p className="text-black font-bold">{item.title}</p>
+			<p className="text-black font-bold capitalize">{item.title}</p>
+			{item.images.length ? (
+				<div className="my-4 -mx-3">
+					<img
+						src={item.images[0]}
+						alt="Task attachment"
+						className="w-full max-h-[300px] object-cover object-top"
+					/>
+				</div>
+			) : null}
+			<div className="flex justify-between mt-4">
+				<div className="flex gap-2">
+					{infoLabel(
+						item.status === 'done' ? faCheck : faBell,
+						dueDateCell(item.dueDate),
+						bgColor(item)
+					)}
+					{infoLabel(faPaperclip, item.images.length)}
+					{infoLabel(faComment, '5')}
+				</div>
+				<div className="w-[30px]">
+					<img
+						className="w-full rounded-default"
+						src={userAvatar(item.userId)}
+						alt="User Image"
+					/>
+				</div>
+			</div>
 		</div>
 	);
 }

@@ -9,7 +9,7 @@ function Board() {
 	const { dispatch, state } = globalState;
 
 	return (
-		<div className="p-4 grow-1">
+		<div className="p-4 grow-1  h-screen overflow-auto">
 			<DragPanel />
 			<AddTaskBtn />
 			{state.modalState ? <Modal /> : null}
