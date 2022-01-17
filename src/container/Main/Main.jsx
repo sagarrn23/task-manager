@@ -9,7 +9,7 @@ function Main() {
 	const { state } = globalState;
 
 	return (
-		<div className="w-screen h-screen flex">
+		<div className="w-screen h-screen flex overflow-hidden bg-stone-50">
 			<div
 				className="h-full w-[5%] min-w-[80px] transition-all"
 				style={{ display: state.menuPanelState ? 'block' : 'none' }}
