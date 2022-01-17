@@ -99,7 +99,7 @@ function Card({ provided, item, snapshot }) {
 			onClick={updateTask}
 		>
 			<p className="text-black font-bold capitalize">{item.title}</p>
-			<span className="absolute right-[0.75rem] top-[0.75rem] hidden group-hover:inline transition-all text-red">
+			<span className="absolute right-[0.75rem] top-[0.75rem] md:hidden group-hover:inline transition-all text-red">
 				<FontAwesomeIcon
 					icon={faTrash}
 					size="sm"
