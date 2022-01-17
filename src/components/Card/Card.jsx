@@ -43,7 +43,6 @@ function Card({ provided, item, snapshot }) {
 	};
 
 	const dueDateCell = (dueDt) => {
-		console.log(dueDt);
 		const dateParts = dueDt.split('-');
 		const monthNames = [
 			'Jan',
@@ -62,7 +61,9 @@ function Card({ provided, item, snapshot }) {
 
 		const date = new Date(+dateParts[0], dateParts[1] - 1, +dateParts[2]);
 
-		return `${monthNames[date.getMonth()]}, ${date.getDate()}`;
+		return date.getDate()
+			? `${monthNames[date.getMonth()]}, ${date.getDate()}`
+			: null;
 	};
 
 	const bgColor = ({ status, dueDate }) => {

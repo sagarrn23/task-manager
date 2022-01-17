@@ -65,3 +65,19 @@ export const taskEditStatus = (globalState, value) => {
 		updating: value
 	};
 };
+
+export const filterTasks = (globalState, isChecked, userId) => {
+	let filteredTasks = [...globalState.tasks];
+	if (isChecked && userId) {
+		filteredTasks = globalState.tasks.filter(
+			(task) => +task.userId === +userId
+		);
+	} else {
+		filteredTasks = [...globalState.allTasks];
+	}
+	return {
+		...globalState,
+		allTasks: [...globalState.tasks],
+		tasks: filteredTasks
+	};
+};

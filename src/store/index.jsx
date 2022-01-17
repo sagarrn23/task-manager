@@ -7,7 +7,8 @@ import {
 	addNewTask,
 	updateExistingTask,
 	setModalData,
-	taskEditStatus
+	taskEditStatus,
+	filterTasks
 } from './actions';
 
 const initialState = {
@@ -22,7 +23,8 @@ const initialState = {
 		dueDate: '',
 		userId: ''
 	},
-	tasks: []
+	tasks: [],
+	allTasks: []
 };
 
 const reducer = (state, action) => {
@@ -41,6 +43,8 @@ const reducer = (state, action) => {
 			return setModalData(state, action.updatedData);
 		case 'TASK_EDIT_STATUS':
 			return taskEditStatus(state, action.value);
+		case 'FILTER_TASKS':
+			return filterTasks(state, action.isChecked, action.userId);
 		default:
 			return state;
 	}
